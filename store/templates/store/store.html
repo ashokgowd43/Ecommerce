@@ -1,0 +1,40 @@
+{% extends 'store/main.html'  %}
+{% load static %}
+
+{% block content %}
+
+     <div class="row">
+        {% for product in products %}
+        <div class="col-lg-4">
+            <img src="{{product.imageURL}}" alt="img-1" class="thumbnail">
+            <div class="box-element product">
+                <h6><strong>{{product.name}}</strong></h6>
+                <p>{{product.description}}</p>
+                <hr>
+                <button data-product={{product.id}} data-action="add" 
+                 class="btn btn-outline-success add-btn update-cart w-50 "  onclick="alert('Product added to cart')">Add to cart</button> <!--  data-product={{product.id}} data-action="add" -> this syntx for to store the cart -->
+                <!-- <a href="#" class="btn btn-outline-success">View</a> -->
+                <!-- <a href="{% url 'product' %}" data-product={{product.id}} class="btn btn-outline-success"  >View</a> -->
+
+                <h4 style="display: inline-block; float:right; color: red;" data-action="view" >${{product.price|floatformat:2}}</h4>
+            </div>
+        </div>
+        {% endfor %}
+
+     </div>
+ 
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+<!-- <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+ 
+<img src="{% static 'images/cart.png' %}" alt="" height="50%" width="20%"> -->
